@@ -19,8 +19,6 @@ var CELL_WHITE = 1;
 var CELL_BLACK = 2;
 var gCurrentColor = CELL_BLACK;
 
-// var gMoveCountElem;
-// var gGameInProgress;
 
 function Cell(row, column) {
     this.row = row;
@@ -66,22 +64,12 @@ function changeTurn(){
 }
 
 function directionIsAvaible(cellCount , cell , nextCell){
-	// console.log("[%d,%d]",cell.row,cell.column);
-	// console.log("next [%d,%d]",nextCell.row,nextCell.column);
-		
-	//error
-	if(cellCount > 8){
-		return false;
-	}
-
 	cellCount++;
-	// console.log(cellCount);
 	if(nextCell.row > kBoardHeight-1 || nextCell.column >kBoardWidth - 1 || nextCell.column < 0 || nextCell.row < 0){
 		return false;
 	}else if(gPieces[nextCell.row][nextCell.column] == 0){
 		return false;
 	}else if(gPieces[nextCell.row][nextCell.column] == gCurrentColor){
-		// console.log("count = %d ",cellCount);
 		if(cellCount > 1){//next cell not the neighbor of original cell
 			return true;
 		}else{
@@ -89,11 +77,9 @@ function directionIsAvaible(cellCount , cell , nextCell){
 		};
 	}else{
 		var tempCell = new Cell(cell.row,cell.column);
-		// console.log("tempCell [%d,%d]",tempCell.row,tempCell.column);
 		cell = new Cell(nextCell.row,nextCell.column);
 		nextCell.row = nextCell.row + nextCell.row - tempCell.row;
 		nextCell.column = nextCell.column + nextCell.column - tempCell.column;
-		// console.log("send cell [%d,%d] send next cell [%d,%d]",cell.row,cell.column,nextCell.row,nextCell.column);
 		return directionIsAvaible(cellCount, cell, nextCell);
 	}
 }
@@ -187,9 +173,6 @@ function drawBoard() {
 }
 
 function drawPiece(row,column,color) {
-    // var column = p.column;
-    // var row = p.row;
-    // var color = p.color;
     var x = (column * kPieceWidth) + (kPieceWidth/2);
     var y = (row * kPieceHeight) + (kPieceHeight/2);
     var radius = (kPieceWidth/2) - (kPieceWidth/10);
@@ -239,21 +222,11 @@ function newGame() {
     drawBoard();
 }
 
-// function endGame() {
-//     gSelectedPieceIndex = -1;
-//     gGameInProgress = false;
-// }
 
 function initGame() {
     // if (!canvasElement) {
     canvasElement = document.createElement("canvas");
     canvasElement.id = "halma_canvas";
     document.body.appendChild(canvasElement);
-    
-    
-    // document.getElementById("replay").onclick = newGame();
-    
-
-   
     newGame();
 }
