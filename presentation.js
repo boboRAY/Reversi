@@ -206,7 +206,7 @@ function drawPiece(row,column,color) {
 
 
 function newGame() {
-	
+
 	gCanvasElement = canvasElement;
     gCanvasElement.width = kPixelWidth;
     gCanvasElement.height = kPixelHeight;
@@ -232,6 +232,7 @@ function newGame() {
 
     gBlackCount = 2;
     gWhiteCount = 2;
+    gCurrentColor = CELL_BLACK;
     document.getElementById("blackcount").innerHTML= gBlackCount;
     document.getElementById("whitecount").innerHTML= gWhiteCount;
 
