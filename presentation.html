@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="presentation.js"></script>
+</head>
+
+<body>
+	<title>Reversi</title>
+	<h1> Reversi </h1>
+
+	<p>Black : <span id="blackcount"></span></p>
+	<p>White : <span id="whitecount"></span></p>
+	<p><input id="replay" type="button" value="replay" onclick="newGame();" /></p>
+	<script>
+  		initGame();
+	</script>
+
+	<canvas id="reversi_canvas" width="401" height="401"></canvas>
+</body>
+</html>
